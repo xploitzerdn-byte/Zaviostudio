@@ -79,7 +79,7 @@
             border-top: 1px dashed #ff0000;
             border-bottom: 1px dashed #ff0000;
             padding: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             background: rgba(15, 0, 0, 0.4);
         }
 
@@ -96,27 +96,6 @@
             color: #aaaaaa;
             word-spacing: 3px;
             line-height: 1.5;
-        }
-
-        /* Styling tambahan untuk Special Request */
-        .special-rq-box {
-            margin-bottom: 25px;
-            font-size: 11px;
-        }
-
-        .special-title {
-            color: #ffffff;
-            font-weight: bold;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .special-list {
-            color: #ff0000;
-            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
-            font-weight: bold;
         }
 
         .btn-audio {
@@ -157,6 +136,7 @@
                 transform: scale(1);
                 opacity: 0.4;
             }
+
             to {
                 transform: scale(1.3);
                 opacity: 1;
@@ -169,8 +149,9 @@
 <body>
 
     <audio id="myMusic"
-        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-        loop></audio>
+        src="https://files.catbox.moe/dsyfto.m4a"
+        loop>
+    </audio>
 
     <div class="container">
 
@@ -196,14 +177,10 @@
 
         <div class="thanks-box">
             <div class="thanks-title">Thanks To Team:</div>
+
             <div class="thanks-list">
                 pasko cyber rexor - traser sec team - Tegal cyber team - Cyber caunter attack - fsociety arena - Vyn elite
             </div>
-        </div>
-
-        <div class="special-rq-box">
-            <div class="special-title">Spesial Riquest:</div>
-            <div class="special-list">Dany404</div>
         </div>
 
         <div class="footer-link">
@@ -218,20 +195,34 @@
     <script>
         const music = document.getElementById("myMusic");
         const btn = document.getElementById("playBtn");
-        const dot = btn.querySelector(".pulse-dot");
 
         function togglePlay() {
+
             if (music.paused) {
+
                 music.volume = 0.5;
+
                 music.play();
-                dot.classList.add("playing");
-                btn.innerHTML = '<span class="pulse-dot playing"></span> [ PAUSE MUSIC ]';
+
+                btn.innerHTML = `
+                    <span class="pulse-dot playing"></span>
+                    [ PLAYING ]
+                `;
+
             } else {
+
                 music.pause();
-                dot.classList.remove("playing");
-                btn.innerHTML = '<span class="pulse-dot"></span> [ TAP TO PLAY ]';
+
+                btn.innerHTML = `
+                    <span class="pulse-dot"></span>
+                    [ TAP TO PLAY ]
+                `;
             }
         }
+
+        window.addEventListener("load", () => {
+            music.volume = 0.5;
+        });
     </script>
 
 </body>
